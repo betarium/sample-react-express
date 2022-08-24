@@ -3,6 +3,8 @@ FROM alpine:3.16
 RUN adduser --disabled-password vscode
 
 RUN apk add bash
+RUN apk add openssh
+RUN apk add git
 
 RUN apk add nodejs=16.16.0-r0
 RUN apk add npm
