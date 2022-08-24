@@ -9,11 +9,7 @@ RUN apk add npm
 
 RUN npm install -g pnpm
 
-ENV PNPM_HOME=/var/pnpm
-
-ENV PATH=$PATH:$PNPM_HOME
-
-RUN pnpm install -g typescript@4.7
+RUN npm install -g typescript@4.7.4
 
 WORKDIR /workspace
 
