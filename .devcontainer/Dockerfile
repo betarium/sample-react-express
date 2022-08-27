@@ -13,7 +13,11 @@ RUN npm install -g pnpm
 
 RUN npm install -g typescript@4.7.4
 
+COPY docker-entry.sh /usr/bin/
+RUN chmod +x /usr/bin/docker-entry.sh
+
 WORKDIR /workspace
 
 USER vscode
 
+CMD docker-entry.sh
