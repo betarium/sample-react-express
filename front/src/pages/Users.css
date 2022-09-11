@@ -1,0 +1,44 @@
+table {
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+  border-collapse: collapse;
+}
+
+tr {
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+}
+
+th {
+  background-color: silver;
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+  padding: 2px;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+td {
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+  padding: 2px;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+dt {
+  width: 240px;
+  text-align: left;
+  background-color: silver;
+}
+
+dd {
+  width: 200px;
+  text-align: left;
+  margin-inline-start: 0;
+  margin-bottom: 10px;
+}
