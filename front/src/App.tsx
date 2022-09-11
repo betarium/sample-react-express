@@ -1,9 +1,16 @@
-import { useState } from 'react'
+import { useCallback } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
+import { useNavigate } from 'react-router'
+import { MouseEvent } from 'react'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const navigate = useNavigate()
+
+  const onClickUserListLink = useCallback((e: MouseEvent) => {
+    e.preventDefault()
+    navigate("/users")
+  }, [navigate])
 
   return (
     <div className="App">
@@ -16,17 +23,9 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+      <div>
+        <a href="/users" onClick={onClickUserListLink}>User List</a>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </div>
   )
 }
