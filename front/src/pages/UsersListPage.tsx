@@ -1,6 +1,6 @@
-import React, { MouseEvent, useCallback } from 'react'
+import React, { MouseEvent, useCallback, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
-import UserModel, { testUserList } from '../models/UserModel'
+import UserModel from '../models/UserModel'
 import "./Users.css"
 
 function UsersListPage() {
@@ -11,7 +11,20 @@ function UsersListPage() {
     navigate("/")
   }, [navigate])
 
-  const userList = testUserList
+  //const userList = testUserList
+
+  const [userList, setUserList] = useState<UserModel[]>([])
+
+  const loadUserList = useCallback(async () => {
+    const apiPath = "/api/users/list"
+    const res = await fetch(apiPath)
+    const data = await res.json() as UserModel[]
+    setUserList(data)
+  }, [setUserList])
+
+  useEffect(() => {
+    loadUserList()
+  }, [loadUserList])
 
   const onClickUserDetailLink = useCallback((e: MouseEvent, user: UserModel) => {
     e.preventDefault()

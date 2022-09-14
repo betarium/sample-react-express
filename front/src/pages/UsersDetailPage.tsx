@@ -1,6 +1,6 @@
-import React, { MouseEvent, useCallback } from 'react'
+import React, { MouseEvent, useCallback, useEffect, useState } from 'react'
 import { useNavigate, useParams } from "react-router";
-import { testUserList } from '../models/UserModel'
+import UserModel from '../models/UserModel'
 import "./Users.css"
 
 function UsersDetailPage() {
@@ -9,7 +9,20 @@ function UsersDetailPage() {
   const params = useParams()
   const userId = parseInt(params["id"]!!)
 
-  const user = testUserList.filter(p => p.id === userId)[0]
+  // const user = testUserList.filter(p => p.id === userId)[0]
+
+  const [user, setUser] = useState<UserModel>({ id: userId, account: "", password: "" } as UserModel)
+
+  const loadUserDetail = useCallback(async () => {
+    const apiPath = "/api/users/detail/" + user.id
+    const res = await fetch(apiPath)
+    const data = await res.json() as UserModel
+    setUser(data)
+  }, [setUser])
+
+  useEffect(() => {
+    loadUserDetail()
+  }, [loadUserDetail])
 
   const onClickUserListLink = useCallback((e: MouseEvent) => {
     e.preventDefault()
