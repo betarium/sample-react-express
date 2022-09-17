@@ -11,6 +11,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <BrowserRouter>
       <Routes>
         <Route path="/users" element={<UsersListPage />} />
+        <Route path="/users/new" element={<UsersDetailPage />} />
         <Route path="/users/:id" element={<UsersDetailPage />} />
         <Route path="/" element={<App />} />
       </Routes>

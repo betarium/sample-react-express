@@ -16,7 +16,8 @@ function UsersListPage() {
   const [userList, setUserList] = useState<UserModel[]>([])
 
   const loadUserList = useCallback(async () => {
-    const apiPath = "/api/users/list"
+    // const apiPath = "/api/users/list"
+    const apiPath = "/api/users"
     const res = await fetch(apiPath)
     const data = await res.json() as UserModel[]
     setUserList(data)
@@ -33,13 +34,32 @@ function UsersListPage() {
 
   const onClickUserCreateLink = useCallback((e: MouseEvent) => {
     e.preventDefault()
-    alert("create!!")
-  }, [])
+    // alert("create!!")
+    navigate("/users/new")
+  }, [navigate])
+
+  const onDelete = useCallback(async (user: UserModel) => {
+    if (!confirm(`delete user [${user.account}]?`)) {
+      return
+    }
+
+    const req = {
+      method: "delete"
+    } as RequestInit
+    const res = await fetch("/api/users/" + user.id, req)
+    const data = await res.json()
+    if (data.success) {
+      alert("delete complete");
+    }
+
+    loadUserList()
+  }, [loadUserList])
 
   const onClickUserDelete = useCallback((e: MouseEvent, user: UserModel) => {
     e.preventDefault()
-    alert(`${user.account} delete!!`)
-  }, [])
+    // alert(`${user.account} delete!!`)
+    onDelete(user)
+  }, [onDelete])
 
   return (
     <>
