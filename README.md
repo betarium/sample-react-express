@@ -1,13 +1,14 @@
-# vscode+dockerでreactとexpressの開発環境を共有してみた
+# React+Expressでサンプルアプリケーションを作成してみた
 
-https://qiita.com/betarium/items/ff0b719276d381752efe
+https://qiita.com/betarium/items/f692b6221ece484cefce
 
-## 環境
+# 開発環境・ツール・ライブラリ
 
-Windows 10 Pro もしくは Fedora
-
-## 必要なツール
-
-* vscode
-* docker
+* Windows 10 Pro または Fedora 36
+* vscode ver 1.71
+* docker-desktop または docker, docker-compose
 * git
+* Node.js ver 16
+* Typescript ver 4.7
+* React ver 18
+* Express ver 4
