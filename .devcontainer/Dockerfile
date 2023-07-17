@@ -11,7 +11,7 @@ RUN apk add nodejs=16.20.1-r0
 
 RUN apk add npm
 
-RUN npm install -g pnpm
+RUN npm install -g pnpm@5.1
 
 RUN npm install -g typescript@4.7.4
 
