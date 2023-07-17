@@ -6,7 +6,9 @@ RUN apk add bash
 RUN apk add openssh
 RUN apk add git
 
-RUN apk add nodejs=16.16.0-r0
+## see https://pkgs.alpinelinux.org/package/v3.16/main/x86_64/nodejs
+RUN apk add nodejs=16.20.1-r0
+
 RUN apk add npm
 
 RUN npm install -g pnpm
